@@ -1,9 +1,63 @@
 ETU003962-ETU004018
 
-TABLE SQL:
-	-Table chauffeur(id_chauffeur,nom_chauffeur);
+TABLE SQL: (bryan)
+	-Table livreur(id_livreur,nom_livreur);
 	-Table vehicule(id_vehicule,nom_vehicule,immatriculation);
-	-Table trajet(id_trajet,nom_trajet,date_debut_trajet,date_fin_trajet,montant_recette,montant_carburant);
-	-Table histo_trajet_jour(id_histo,id_trajet,id_vehicule,id_chauffeur,km_effectue,montant_recette,montant_carburant,date_histo);
+	-Table statut(id_statut,nom_statut);
+	-Table colis(id_colis,nom_colis,poids);
+	-Table livraison(id_livraison,id_colis,adresse_depart,adresse_destination,id_statut);
+	-Table historique_livraison(id_histo,id_livraison,id_livreur,id_vehicule,date_livraison (date de depart),montant_recette,salaire_livreur);
 	
+
+PAGE:
+		
+	-accueil.php: (bryan)
+		-base: none
+			
+		-fonctions: none
+
+		-design:
+			-Sous forme de card:
+				-Bouton Gestion de livraison (lien vers gestionlivraison.php); 
+				-Bouton Benefice par periode (lien vers benefice.php); 
+
+		-integration: none
+		
+	-gestionlivraison.php:
 	
+	-benefice.php:
+		
+	
+CONTROLLER-MODELS-ROUTE:
+	-accueil.php: 
+		-Controller: none
+		
+		-Models: none
+		
+		-Route: /;
+		
+	-gestionlivraison.php:
+		-Controller: 
+			-GestionLivraisonController:
+				-Getstatut():
+					-Appel de StatutModel;
+					-Appel de la fonction getstatut() de statutModel; 
+					-Recuperation du resultat;
+					-Envoie du resultat vers gestionlivraison.php;
+		
+		-Models:
+			-StatutModel;
+		
+		-Route: /gestion/livraison;
+		
+	-benefice.php:
+		-Controller:
+			-BeneficeController:
+				
+		-Models:
+		
+		-Route:
+			-/benefice;
+			-/benefice/jour;
+			-/benefice/mois;
+			-/benefice/annee;
