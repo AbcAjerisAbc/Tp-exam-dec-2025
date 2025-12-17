@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Coopérative</title>
+    <title>Accueil - Gestion de livraison</title>
     <link href="<?= BASE_URL ?>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/bootstrap-icons/font/bootstrap-icons.css">
 </head>
@@ -23,7 +23,7 @@
             <article class="row g-4">
                 <section class="col-12 col-md-6 col-lg-6">
                     <article class="card h-100 shadow-sm border-0 text-center">
-                        <a href="" class="text-decoration-none text-dark">
+                        <a href="<?= BASE_URL ?>/gestion/livraison" class="text-decoration-none text-dark">
                             <section class="card-body p-4">
                                 <i class="bi bi-clipboard2 text-primary display-1 mb-3"></i>
                                 <h2 class="card-title h4 fw-bold mb-3">Gestion de livraison</h2>

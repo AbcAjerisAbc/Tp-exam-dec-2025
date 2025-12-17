@@ -1,6 +1,6 @@
 <?php
 
-use app\controllers\ProduitController;
+use app\controllers\GestionLivraisonController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
@@ -12,13 +12,15 @@ use flight\net\Router;
 
 // This wraps all routes in the group with the SecurityHeadersMiddleware
 $router->group('', function(Router $router) use ($app) {
-	$controller = new ProduitController($app);
+	$controller = new GestionLivraisonController($app);
 	$router->get('/',function(){
 		Flight::render('accueil');
 	});
 
-	$router->get('/produit/@id', [$controller,'getProduit']);
+	$router->get('/gestion/livraison', [$controller,'getinfopourinsertion']);
 
+	$router->post('/gestion/livraison/inserer', [$controller,'insertlivraison']);
+	
 	$router->get('/ajout',function(){
 		Flight::render('ajout');
 	});
@@ -27,6 +29,6 @@ $router->group('', function(Router $router) use ($app) {
 		Flight::render('ajout',['id' => $id]);
 	});
 
-	$router->post('/add', [$controller,'addProduit']);
+	
 	
 }, [ SecurityHeadersMiddleware::class ]);

@@ -24,72 +24,88 @@ PAGE:
 		-integration: none
 		
 	-gestionlivraison.php: (Bryan)
-		-base:
+		-(ok) base:
+			-(ok) Table colis;
+			-(ok) Table livreur;
+			-(ok) Table vehicule;
+			-(ok) Table statut;
+			-(ok) Table livraison;
+			-(ok) Table historique_livraison;
 		
-		-fonction:
+		-fonction: 
+			-(ok) Getinfopourinsertion();
+			-Insertlivraison();
 		
 		-design:
 			-Formulaire:
-				-liste deroulante:
-					-colis;
-					-voiture;
-					-chauffeur;
-					-statut;
+				-(ok) liste deroulante:
+					-(ok) colis; 
+					-(ok) voiture;
+					-(ok) chauffeur;
+					-(ok) statut;
 					
-				-Saisie:
-					-salaire du chauffeur;
-					-montant du colis par kg;
-					-adresse de depart;
-					-adresse de destination;
+				-(ok) Saisie:
+					-(ok) salaire du chauffeur;
+					-(ok) montant du colis par kg;
+					-(ok) adresse de depart;
+					-(ok) adresse de destination;
 					
-				-Bouton Enregistrer(lien vers /gestion/livraison/inserer);
+				-(ok) Bouton Enregistrer(lien vers /gestion/livraison/inserer);
+				
+		-integration:
+			-(ok) Mettre en dynamique les listes deroulantes;
 				
 	-benefice.php: (Hasina)
 		
 	
 CONTROLLER-MODELS-ROUTE:
-	-accueil.php: 
+	-(ok) accueil.php: 
 		-Controller: none
 		
 		-Models: none
 		
-		-Route: /;
+		-(ok) Route: /;
 		
 	-gestionlivraison.php:
 		-Controller: 
-			-GestionLivraisonController:
-				-Getinfopourinsertion():
-					-Appel de ColisModel;
-					-Appel de VehiculeModel;
-					-Appel de ChauffeurModel;
-					-Appel de StatutModel;
-					-Appel de la fonction getAllcolis() de ColisModel;
-					-Appel de la fonction getAllvehicule() de VehiculeModel;
-					-Appel de la fonction getAllchauffeur() de ChauffeurModel;
-					-Appel de la fonction getAllstatus() de StatutModel;
-					-Recuperation des resultats et les placer dans un tableau;
-					-Envoie du resultat ver gestionlivraison.php;
+			-(ok) GestionLivraisonController:
+				-(ok) Getinfopourinsertion():
+					-(ok) Appel de ColisModel; 
+					-(ok) Appel de VehiculeModel;
+					-(ok) Appel de ChauffeurModel;
+					-(ok) Appel de StatutModel;
+					-(ok) Appel de la fonction getAllcolis() de ColisModel;
+					-(ok) Appel de la fonction getAllvehicule() de VehiculeModel;
+					-(ok) Appel de la fonction getAlllivreur() de ChauffeurModel;
+					-(ok) Appel de la fonction getAllstatus() de StatutModel;
+					-(ok) Recuperation des resultats et les placer dans un tableau;
+					-(ok) Envoie du resultat ver gestionlivraison.php;
 					
-				-Insertlivraison():
-					-Appel de LivraisonModel;
-					-Appel de HistoLivraisonModel;
-					-Prendre les valeurs dans venant du formulaire;
-					-Placer les valeurs dans les Models correspondants;
-					-Appel de la fonction insertlivraison() de LivraisonModel;
-					-Appel de la fonction inserthistorique() de HistoLivraisonModel;
-					-Appel de la fonction Getinfopourinsertion();
+				-(ok) Insertlivraison():
+					-(ok) Appel de LivraisonModel;
+					-(ok) Appel de HistoLivraisonModel;
+					-(ok) Prendre les valeurs dans venant du formulaire;
+					-(ok) Placer les valeurs dans les Models correspondants;
+					-(ok) Appel de la fonction insererlivraison() de LivraisonModel;
+					-(ok) appel de la fonction getdernierelivraison() de LivraisonModel;
+					-(ok) Appel de ColisModel;
+					-(ok) Appel de la fonction getcolis(id_colis) de ColisModel et recuperer le poids du colis;
+					
+					-(ok) Appel de la fonction insererhistorique() de HistoLivraisonModel;
+					-(ok) Appel de la fonction Getinfopourinsertion();
 		
 		-Models:
-			-ColisModel;
-			-VehiculeModel;
-			-ChauffeurModel;
-			-StatutModel;
-			-LivraisonModel;
-			-HistoLivraisonModel;
+			-(ok) ColisModel;
+			-(ok) VehiculeModel;
+			-(ok) ChauffeurModel;
+			-(ok) StatutModel;
+			-(ok) LivraisonModel;
+			-(ok) HistoLivraisonModel;
 		
 		-Route: 
-			-/gestion/livraison;
-			-/gestion/livraison/inserer;
+			-(ok) /gestion/livraison;
+			-(ok) /gestion/livraison/inserer;
+			
 		
 	-benefice.php:
 		-Controller:
