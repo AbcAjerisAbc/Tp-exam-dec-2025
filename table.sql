@@ -91,4 +91,4 @@ INSERT INTO transport_historique_livraison (id_livraison, id_livreur,id_vehicule
 
 CREATE VIEW v_livreur_occuper AS SELECT thl.id_livraison as id_livraison, thl.id_livreur as id_livreur,id_statut FROM transport_historique_livraison thl JOIN transport_livraison ON thl.id_livraison=transport_livraison.id_livraison JOIN transport_livreur ON transport_livreur.id_livreur=thl.id_livreur WHERE id_statut=1;
 
-CREATE VIEW v_livreur_non_occuper AS SELECT transport_livreur.id_livreur as id_livreur,nom_livreur FROM transport_livreur LEFT JOIN v_livreur_occuper ON transport_livreur.id_livreur=v_livreur_occuper.id_livreur;
+CREATE VIEW v_livreur_non_occuper AS SELECT transport_livreur.id_livreur as id_livreur,nom_livreur FROM transport_livreur LEFT JOIN v_livreur_occuper ON transport_livreur.id_livreur=v_livreur_occuper.id_livreur WHERE id_statut IS NULL;

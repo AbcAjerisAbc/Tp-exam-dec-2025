@@ -21,14 +21,4 @@ $router->group('', function(Router $router) use ($app) {
 
 	$router->post('/gestion/livraison/inserer', [$controller,'insertlivraison']);
 	
-	$router->get('/ajout',function(){
-		Flight::render('ajout');
-	});
-
-	$router->get('/ajout/@id',function($id){
-		Flight::render('ajout',['id' => $id]);
-	});
-
-	
-	
 }, [ SecurityHeadersMiddleware::class ]);
