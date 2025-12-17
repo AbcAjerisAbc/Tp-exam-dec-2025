@@ -13,7 +13,9 @@ use flight\net\Router;
 // This wraps all routes in the group with the SecurityHeadersMiddleware
 $router->group('', function(Router $router) use ($app) {
 	$controller = new ProduitController($app);
-	$router->get('/', [$controller,'getProduits']);
+	$router->get('/',function(){
+		Flight::render('accueil');
+	});
 
 	$router->get('/produit/@id', [$controller,'getProduit']);
 
