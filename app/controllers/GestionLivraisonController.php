@@ -22,8 +22,6 @@ class GestionLivraisonController {
 		$this->app = $app;
 	}
 
-	
-
 	public function getinfopourinsertion() {
 		
 		$Colis=new ColisModel($this->app->db());

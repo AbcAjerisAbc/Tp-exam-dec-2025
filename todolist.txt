@@ -112,6 +112,7 @@ CONTROLLER-MODELS-ROUTE:
 			-BeneficeController:
 				
 		-Models:
+			-Bene
 		
 		-Route:
 			-/benefice;
