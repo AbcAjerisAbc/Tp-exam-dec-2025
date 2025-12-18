@@ -92,3 +92,9 @@ INSERT INTO transport_historique_livraison (id_livraison, id_livreur,id_vehicule
 CREATE VIEW v_livreur_occuper AS SELECT thl.id_livraison as id_livraison, thl.id_livreur as id_livreur,id_statut FROM transport_historique_livraison thl JOIN transport_livraison ON thl.id_livraison=transport_livraison.id_livraison JOIN transport_livreur ON transport_livreur.id_livreur=thl.id_livreur WHERE id_statut=1;
 
 CREATE VIEW v_livreur_non_occuper AS SELECT transport_livreur.id_livreur as id_livreur,nom_livreur FROM transport_livreur LEFT JOIN v_livreur_occuper ON transport_livreur.id_livreur=v_livreur_occuper.id_livreur WHERE id_statut IS NULL;
+
+CREATE VIEW transport_view_benefice_jour AS SELECT date_livraison, SUM(montant_recette) AS total_recette, SUM(salaire_livreur) AS total_salaire  ,(SUM(montant_recette) - SUM(salaire_livreur)) AS benefice FROM transport_historique_livraison GROUP BY date_livraison;
+
+CREATE VIEW transport_view_benefice_mois AS SELECT YEAR(date_livraison) AS annee, MONTH(date_livraison) AS mois, SUM(montant_recette) AS total_recette, SUM(salaire_livreur) AS total_salaire, (SUM(montant_recette) - SUM(salaire_livreur)) AS benefice FROM transport_historique_livraison GROUP BY YEAR(date_livraison), MONTH(date_livraison);
+
+CREATE VIEW transport_view_benefice_annee AS SELECT  YEAR(date_livraison) AS annee, SUM(montant_recette) AS total_recette, SUM(salaire_livreur) AS total_salaire, (SUM(montant_recette) - SUM(salaire_livreur)) AS benefice FROM transport_historique_livraison GROUP BY YEAR(date_livraison);
